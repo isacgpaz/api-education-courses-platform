@@ -5,7 +5,8 @@ export interface ICourse extends Document{
   title: string,
   description: string,
   thumbnail: string,
-  lesson: Array<ILesson>,
+  lessons: Array<ILesson>,
   workload: number,
   isCompleted: boolean,
+  category: string,
 }
