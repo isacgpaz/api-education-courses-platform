@@ -56,7 +56,7 @@ const auth = async (request: Request, response: Response) => {
 
     return response.status(201).send({
       user,
-      token: generateToken({ 'id': user.id })
+      token: generateToken({ 'id': user.id, 'level': user.level })
     });
   }catch(error){
     return response.status(400).send({ error: error.message });
@@ -92,17 +92,16 @@ const updateUser = async (request: Request, response: Response) => {
       cpf,
       phone,
       email,
-      courses,
       password,
       level
     }).populate('courses').populate('lessons');
-
+    
     if(!user){
       return response.status(400).send({ error: 'User not found.' });
     }
-
-    user.courses = [];
     
+    user.courses = [];
+
     await Promise.all(courses.map(async (course: ICourse) => {
       const userCourse = await Course.findById(course.id);
       
