@@ -27,7 +27,7 @@ usersRouter.delete('/:userId', authMiddleware, UserController.removeUser);
 
 coursesRouter.post('/', CourseController.createCourse);
 coursesRouter.get('/', CourseController.getAllCourses);
-coursesRouter.get('/:courseId', authMiddleware, CourseController.getCourse);
+coursesRouter.get('/:courseId', CourseController.getCourse);
 coursesRouter.put('/:courseId', authMiddleware, CourseController.updateCourse);
 coursesRouter.delete('/:courseId', authMiddleware, CourseController.removeCourse);
 
@@ -36,7 +36,7 @@ coursesRouter.delete('/:courseId', authMiddleware, CourseController.removeCourse
 */ 
 
 categoriesRouter.post('/', authMiddleware, CategoryController.createCategory);
-categoriesRouter.get('/', authMiddleware, CategoryController.getAllCategories);
+categoriesRouter.get('/', CategoryController.getAllCategories);
 categoriesRouter.get('/:categoryId', authMiddleware, CategoryController.getCategory);
 categoriesRouter.put('/:categoryId', authMiddleware, CategoryController.updateCategory);
 categoriesRouter.delete('/:categoryId', authMiddleware, CategoryController.removeCategory);
